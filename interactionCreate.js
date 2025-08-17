@@ -27,7 +27,7 @@ module.exports = class interactionCreate extends events {
 
         // Verifica se o ID do personagem existe
         connect.query(
-          `SELECT * FROM vrp_user WHERE id = '${characterId}'`,
+          `SELECT * FROM vrp_users WHERE id = '${characterId}'`,
           async (error, rows) => {
             if (error) {
               console.error(error);
@@ -57,7 +57,7 @@ module.exports = class interactionCreate extends events {
 
             // Verifica se já tem whitelist
             connect.query(
-              `SELECT * FROM vrp_user WHERE id = '${characterId}' AND whitelist = 1`,
+              `SELECT * FROM vrp_users WHERE id = '${characterId}' AND whitelist = 1`,
               async (error, rows) => {
                 if (error) {
                   console.error(error);
@@ -89,7 +89,7 @@ module.exports = class interactionCreate extends events {
 
                 // Aprova whitelist
                 connect.query(
-                  `UPDATE vrp_user SET whitelist = '1' WHERE id = '${characterId}'`,
+                  `UPDATE vrp_users SET whitelist = '1' WHERE id = '${characterId}'`,
                   async (error) => {
                     if (error) {
                       console.error(error);
